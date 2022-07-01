@@ -74,12 +74,12 @@ void recv_msg_handler() {
 }
 
 int main(int argc, char **argv){
-	if(argc != 2){
-		printf("Usage: %s <port>\n", argv[0]);
+	if(argc != 3){
+		printf("Usage: %s <port> <ip> \n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
-	char *ip = "127.0.0.1";
+	char *ip =argv[2];
 	int port = atoi(argv[1]);
 
 	signal(SIGINT, catch_ctrl_c_and_exit);
@@ -90,7 +90,7 @@ int main(int argc, char **argv){
 
 
 	if (strlen(name) > 32 || strlen(name) < 2){
-		printf("Name must be less than 30 and more than 2 characters.\n");
+		printf("Name must be less than 32 and more than 2 characters.\n");
 		return EXIT_FAILURE;
 	}
 
@@ -118,7 +118,7 @@ int main(int argc, char **argv){
 int nrole;
 scanf ("%d",&nrole);
 if(nrole != 1  && nrole != 2  && nrole != 3 ){printf (" Must select 1,2,3\n");
-scanf ("%d",&nrole);}
+return EXIT_FAILURE;}
 
 //role 1: Talker
 
